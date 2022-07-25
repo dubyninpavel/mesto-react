@@ -14,7 +14,7 @@ function App() {
     const [selectedCard, setSelectedCard] = useState({});
 
     function handleEditAvatarClick() {
-        setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+        setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen); //Явно указать можно, но тогда придется писать функцию закрытия попапов, а сейчас эта функция отвечает за открытие и закрытие попапов)
     }
     
     function handleEditProfileClick() {
@@ -26,10 +26,10 @@ function App() {
         
     }
 
-    function handleOpenImageClick({ nameCard , linkCard }) {
+    function handleOpenImageClick({ name , link }) {
         setSelectedCard({ 
-            name: nameCard,
-            link: linkCard
+            name,
+            link
         })
         setIsImagePopupOpen(!isImagePopupOpen);
     }
@@ -53,50 +53,39 @@ function App() {
                 onClose={handleEditAvatarClick}
                 appellation="avatar"
                 title="Обновить аватар"
-                children={(
-                    <fieldset className="popup__fieldset">
-                        <input className="popup__input popup__subline" id="popup__avatarLink" type="url" name="avatar" placeholder="Ссылка на картинку" required />
-                        <span className="popup__input-error popup__avatarLink-error"></span>
-                        <button className="popup__button popup__save" type="submit">Сохранить</button>
-                    </fieldset>
-                )}
-            />
+                buttonSubmit="Сохранить"
+            >
+                <input className="popup__input popup__subline" id="popup__avatarLink" type="url" name="avatar" placeholder="Ссылка на картинку" required />
+                <span className="popup__input-error popup__avatarLink-error"></span>
+            </PopupWithForm>
             <PopupWithForm
                 isOpen={isEditProfilePopupOpen}
                 onClose={handleEditProfileClick}
                 appellation="edit-profile"
                 title="Редактировать профиль"
-                children={(
-                    <fieldset className="popup__fieldset">
-                            <input className="popup__input popup__name" id="popup__profileName" type="text" name="name" placeholder="Ваше имя" minLength="2" maxLength="40" required />
-                            <span className="popup__input-error popup__profileName-error"></span>
-                            <input className="popup__input popup__subline" id="popup__profileSubline" type="text" name="about" placeholder="Чем занимаетесь?" minLength="2" maxLength="200" required />
-                            <span className="popup__input-error popup__profileSubline-error"></span>
-                            <button className="popup__button popup__save" type="submit" disabled>Сохранить</button>
-                    </fieldset>
-                )}
-            />
+                buttonSubmit="Сохранить"
+            >
+                <input className="popup__input popup__name" id="popup__profileName" type="text" name="name" placeholder="Ваше имя" minLength="2" maxLength="40" required />
+                <span className="popup__input-error popup__profileName-error"></span>
+                <input className="popup__input popup__subline" id="popup__profileSubline" type="text" name="about" placeholder="Чем занимаетесь?" minLength="2" maxLength="200" required />
+                <span className="popup__input-error popup__profileSubline-error"></span>
+            </PopupWithForm>
             <PopupWithForm
                 isOpen={isAddPlacePopupOpen}
                 onClose={handleAddPlaceClick}
                 appellation="add-cards"
                 title="Новое место"
-                children={(
-                    <fieldset className="popup__fieldset">
-                        <input className="popup__input popup__name" id="popup__cardName" type="text" name="name" placeholder="Название" minLength="2" maxLength="30" required />
-                        <span className="popup__input-error popup__cardName-error"></span>
-                        <input className="popup__input popup__subline" id="popup__cardLink" type="url" name="link" placeholder="Ссылка на картинку" required />
-                        <span className="popup__input-error popup__cardLink-error"></span>
-                        <button className="popup__button popup__save" type="submit">Создать</button>
-                    </fieldset>
-                )}
-            />
+                buttonSubmit="Создать"
+            >
+                <input className="popup__input popup__name" id="popup__cardName" type="text" name="name" placeholder="Название" minLength="2" maxLength="30" required />
+                <span className="popup__input-error popup__cardName-error"></span>
+                <input className="popup__input popup__subline" id="popup__cardLink" type="url" name="link" placeholder="Ссылка на картинку" required />
+                <span className="popup__input-error popup__cardLink-error"></span>
+            </PopupWithForm>
             <PopupWithForm
                 appellation="delete-card"
                 title="Вы уверены?"
-                children={(
-                    <button className="popup__button popup__save popup__delete" type="submit">Да</button>
-                )}
+                buttonSubmit="Да"
             />
             <ImagePopup
                 isOpen = {isImagePopupOpen}

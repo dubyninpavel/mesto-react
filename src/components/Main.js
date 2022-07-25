@@ -11,11 +11,11 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
     useEffect(() => {
         api.getAllData()
             .then((items) => {
-                const [ dataFromUserPromise, dataFromCardsPromise ] = items;
-                setUserName(dataFromUserPromise.name);
-                setUserDescription(dataFromUserPromise.about);
-                setUserAvatar(dataFromUserPromise.avatar);
-                setCards(dataFromCardsPromise);
+                const [ user, dateCards ] = items;
+                setUserName(user.name);
+                setUserDescription(user.about);
+                setUserAvatar(user.avatar);
+                setCards(dateCards);
             })
             .catch((err) => {
                 console.log(err);
@@ -49,8 +49,8 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
                         handleCardClick = {onCardClick}
                         key={_id}
                         countLikes = {likes}
-                        nameCard = {name}
-                        linkCard = {link}
+                        name = {name}
+                        link = {link}
                     />
                 ))}
               </ul>
