@@ -1,4 +1,4 @@
-function PopupImage({ isOpen, onClose, dateCard }) {
+function ImagePopup({ isOpen, onClose, dateCard }) {
     return (
         <div className={`popup popup_photo ${ isOpen ? "popup_is-active" : "" }`}>
             <div className="popup__container">
@@ -10,4 +10,4 @@ function PopupImage({ isOpen, onClose, dateCard }) {
     );
 }
 
-export default PopupImage;
+export default ImagePopup;

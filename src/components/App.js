@@ -4,7 +4,7 @@ import Header from './Header';
 import Main from './Main.js';
 import Footer from './Footer.js';
 import PopupWithForm from './PopupWithForm.js';
-import PopupImage from './PopupImage';
+import ImagePopup from './ImagePopup';
 
 function App() {
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -98,7 +98,7 @@ function App() {
                     <button className="popup__button popup__save popup__delete" type="submit">Да</button>
                 )}
             />
-            <PopupImage
+            <ImagePopup
                 isOpen = {isImagePopupOpen}
                 onClose = {handleCloseImage}
                 dateCard = {selectedCard}
