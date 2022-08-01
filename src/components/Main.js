@@ -12,8 +12,8 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
               <div className="profile__container">
                   <div className="profile__main">
                       <div className="profile__avatar" onClick={onEditAvatar}>
-                          <div className="profile__cursor"></div>
                           <img className="profile__image" src={CurrentUserInfo.avatar} alt="Аватарка" />
+                          <div className="profile__cursor"></div>
                       </div>
                       <div className="profile__info">
                           <div className="profile__window">
